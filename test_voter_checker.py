@@ -3,8 +3,8 @@ import unittest
 
 from voter_checker import is_eligible_to_vote
 
-class TestVoterEligibility(unittest.TestCase):
 
+class TestVoterEligibility(unittest.TestCase):
 
     def test_valid_voter(self):
         result = self.is_eligible_to_vote(18)
