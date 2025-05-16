@@ -5,19 +5,22 @@ from voter_checker import is_eligible_to_vote
 class TestVoterEligibility(unittest.TestCase):
 
     def test_valid_voter(self):
-        self.assertTrue(is_eligible_to_vote(18, True))
+        result = self.is_eligible_to_vote(18)
+        self.assertTrue(result)
 
     def test_underage_voter(self):
-        self.assertFalse(is_eligible_to_vote(17, False))
+        result = self.is_eligible_to_vote(17)
+        self.assertFalse(result)
 
     def test_non_citizen_voter(self):
-        result = is_eligible_to_vote(is_citizen=False)
+        result = self.is_eligible_to_vote(is_citizen) = False
         self.assertFalse(result)
-        # self.assertFalse(is_eligible_to_vote(is_citizen = False))
 
     def test_underage_non_citizen(self):
-        self.assertFalse(is_eligible_to_vote(17, False), is_eligible_to_vote(is_citizen=False))
+        result = self.is_eligible_to_vote(18) and is_eligible_to_vote(is_citizen=False)
+        self.assertFalse(result)
 
-    
     def test_negative_age(self):
-        self.assertEqual(is_eligible_to_vote(-1)=="Age cannot be negative")
+        result = self.is_eligible_to_vote(-1)
+        self.assertEqual(result, "Age cannot be negative")
+
